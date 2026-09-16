@@ -14,3 +14,24 @@ library.add_book("Machine Learning", 5)
 
 print(library.get_available_books())
 # ['Python Basics', 'Machine Learning']
+
+
+
+analyzer = MovieRatingAnalyzer()
+
+ratings = analyzer.create_rating_array([85, 90, 78, 92, 88])
+
+print(analyzer.validate_ratings(ratings))
+# True
+
+print(analyzer.compute_rating_summary(ratings))
+# (433.0, 86.6, 92.0)
+
+print(analyzer.apply_bonus(ratings))
+# [85.  94.5 78.  96.6 92.4]
+
+print(analyzer.categorize_movies(ratings))
+# ['Good' 'Excellent' 'Needs Improvement' 'Excellent' 'Good']
+
+print(analyzer.format_ratings_with_grades(ratings))
+# ['B' 'A' 'C' 'A' 'B']
