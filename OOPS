@@ -1,0 +1,16 @@
+library = LibraryInventorySystem()
+
+print(library.add_book("Python Basics", 10))
+# {'Python Basics': 10}
+
+print(library.update_book_quantity("Python Basics", 15))
+# {'Python Basics': 15}
+
+print(library.get_book_stock("Python Basics"))
+# 15
+
+library.add_book("SQL Basics", 0)
+library.add_book("Machine Learning", 5)
+
+print(library.get_available_books())
+# ['Python Basics', 'Machine Learning']
