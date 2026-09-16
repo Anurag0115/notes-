@@ -35,3 +35,42 @@ print(analyzer.categorize_movies(ratings))
 
 print(analyzer.format_ratings_with_grades(ratings))
 # ['B' 'A' 'C' 'A' 'B']
+
+
+
+
+
+
+
+analyzer = DeliveryTimeAnalyzer()
+
+delivery_df = analyzer.create_delivery_log_df([
+    [301, "RF", "Andheri-Mumbai", 30],
+    [302, "TB", "Bandra-Mumbai", 60],
+    [303, "RF", "Andheri-Mumbai", 10]
+])
+
+restaurant_df = analyzer.create_restaurant_master_df([
+    ["RF", "Royal Foods"],
+    ["TB", "Tasty Bites"]
+])
+
+merged_df = analyzer.merge_restaurant_names(
+    delivery_df,
+    restaurant_df
+)
+
+print(merged_df)
+
+print(analyzer.average_delivery_by_restaurant(merged_df))
+#   RestaurantName  Average Delivery
+# 0    Royal Foods              20.0
+# 1    Tasty Bites              60.0
+
+print(analyzer.filter_slow_deliveries(delivery_df, 40))
+#   OrderID RestaurantCode           Area  DeliveryTime
+# 1      302             TB  Bandra-Mumbai            60
+
+print(analyzer.slowest_delivery_area(delivery_df))
+#             Area  DeliveryTime
+# 1  Bandra-Mumbai          60.0
